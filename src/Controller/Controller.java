@@ -1,5 +1,16 @@
 package Controller;
 
-public class Controller {
+import Model.Mundo;
+import processing.core.PApplet;
 
+public class Controller {
+	private Mundo logic;
+	
+	public Controller(PApplet app) {
+		logic = new Mundo(app);
+	}
+	
+	public void draw() {
+		logic.draw();
+	}
 }
