@@ -2,6 +2,7 @@ package Model;
 
 import java.util.ArrayList;
 
+import Model.Polo;
 import processing.core.PApplet;
 
 public class Mundo {
@@ -28,10 +29,47 @@ public class Mundo {
 			polos.draw();
 			new Thread(polos).start();
 
-			if (Polo.get(i).getDist() < 30) {
-				Polo current = polos.get(i);
-				Polo.remove(current);
+			/*
+			 * if (Polo.get(i).getDist() < 30) {//Idea de como desaparecer a los polos Polo
+			 * current = polos.get(i); Polo.remove(current); }
+			 */
+
+		}
+	}
+
+	public void movMarco() {
+		int distMP = 700;
+		int DistMaP = 0;
+		int position = 0;
+
+		if (polos.size() == 0) {
+		}
+
+		for (int i = 0; i < polos.size(); i++) {
+			DistMaP = (int) PApplet.dist(marco.getPosX(), marco.getPosY(), polos.get(i).getPosX(),
+					polos.get(i).getPosY());
+			if (DistMaP < distMP) {
+				distMP = DistMaP;
+				position = i;
 			}
 		}
+		if (PApplet.dist(marco.getPosX(), marco.getPosY(), polos.get(position).getPosX(),
+				polos.get(position).getPosY()) < 20) {
+			polos.remove(position);
+		}
+
+		if (polos.get(position).getPosX() == marco.getPosX() && polos.get(position).getPosY() < marco.getPosY()) {
+
+		} else if (polos.get(position).getPosX() > marco.getPosX()
+				&& polos.get(position).getPosY() < marco.getPosY()) {
+
+		} else if (polos.get(position).getPosX() > marco.getPosX()
+				&& polos.get(position).getPosY() == marco.getPosY()) {
+
+		} else if (polos.get(position).getPosX() > marco.getPosX()
+				&& polos.get(position).getPosY() > marco.getPosY()) { //No se por que verga no funciona, auxilio
+
+		} 	
+
 	}
 }
